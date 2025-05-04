@@ -135,10 +135,8 @@ func (sp *subPubImpl) Publish(subject string, msg interface{}) error {
 			case sub.msgChan <- msg:
 				// Успешно отправили сообщение
 			default:
-				// Если канал заполнен, добавляем сообщение в порядке очереди
-				go func(sub *subscriber, message interface{}) {
-					sub.msgChan <- message
-				}(sub, msg)
+				// Если канал заполнен, блокируем до освобождения места
+				sub.msgChan <- msg
 			}
 		}
 		sub.mu.RUnlock()
