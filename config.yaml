@@ -1,0 +1,5 @@
+grpc:
+  addr: ":50051"
+log:
+  level: "info"
+shutdown_timeout: 10s
