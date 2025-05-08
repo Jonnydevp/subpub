@@ -3,7 +3,7 @@ package main
 import (
 	"context"
 	"fmt"
-	"gopubsub/subpub"
+	"gospub/subpub"
 	"sync"
 	"time"
 )
